@@ -7,9 +7,9 @@ It also allows users to download reports in **PDF** and **JSON** formats.
 ---
 
 ## 🚀 Live Demo
-(Replace with your Streamlit link after deployment)
 
-https://your-app-name.streamlit.app
+
+https://cnn-based-crop-disease-predictor-vay.streamlit.app/
 
 ---
 
@@ -165,5 +165,3 @@ Your Name
 ## 📜 License
 This project is for educational and research purposes.
 
-
-LINK = https://cnn-based-crop-disease-predictor-vay.streamlit.app/
