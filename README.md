@@ -148,11 +148,7 @@ Severity is calculated based on prediction confidence:
 
 ---
 
-## 👨‍💻 Author
-Your Name  
-(Add your GitHub or LinkedIn link)
 
----
 
 ## 📜 License
 This project is for educational and research purposes.
