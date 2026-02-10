@@ -8,7 +8,7 @@ import os
 st.set_page_config(page_title="Crop Disease Detector", layout="centered")
 
 MODEL_PATH = "crop_model_15classes.keras"
-FILE_ID = "PASTE_YOUR_FILE_ID_HERE"
+FILE_ID = "1UCwUCrrVmFL2NifYhbrJwW4NsVjGLZCV"
 
 # Download model if not present
 if not os.path.exists(MODEL_PATH):
