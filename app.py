@@ -25,6 +25,10 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+# ---------------- HTML RENDER HELPER ----------------
+def render_html(html: str):
+    st.markdown(dedent(html).strip(), unsafe_allow_html=True)
+
 # ---------------- DATABASE ----------------
 DB_PATH = "crop_users.db"
 
@@ -101,11 +105,15 @@ if "auth_mode" not in st.session_state:
     st.session_state.auth_mode = "landing"
 
 # ---------------- CUSTOM CSS ----------------
-st.markdown(dedent("""
+render_html("""
 <style>
     .stApp {
-        background: linear-gradient(135deg, #08140f 0%, #0f1f17 45%, #14281d 100%);
+        background: linear-gradient(135deg, #081120 0%, #0f172a 45%, #111827 100%);
         color: #f8fafc;
+    }
+
+    .main > div {
+        padding-top: 1rem;
     }
 
     .block-container {
@@ -115,7 +123,7 @@ st.markdown(dedent("""
     }
 
     section[data-testid="stSidebar"] {
-        background: linear-gradient(180deg, #0c1812 0%, #132019 100%);
+        background: linear-gradient(180deg, #0b1220 0%, #101827 100%);
         border-right: 1px solid rgba(255,255,255,0.08);
     }
 
@@ -126,7 +134,7 @@ st.markdown(dedent("""
     .hero-card {
         position: relative;
         overflow: hidden;
-        background: linear-gradient(135deg, rgba(16,185,129,0.18), rgba(34,197,94,0.12), rgba(59,130,246,0.10));
+        background: linear-gradient(135deg, rgba(37,99,235,0.16), rgba(99,102,241,0.13), rgba(14,165,233,0.12));
         border: 1px solid rgba(255,255,255,0.10);
         border-radius: 28px;
         padding: 48px 42px 34px 42px;
@@ -142,7 +150,7 @@ st.markdown(dedent("""
         right: -60px;
         width: 220px;
         height: 220px;
-        background: radial-gradient(circle, rgba(34,197,94,0.25) 0%, rgba(34,197,94,0.0) 70%);
+        background: radial-gradient(circle, rgba(59,130,246,0.28) 0%, rgba(59,130,246,0.0) 70%);
         border-radius: 50%;
     }
 
@@ -152,7 +160,7 @@ st.markdown(dedent("""
         border-radius: 999px;
         background: rgba(255,255,255,0.08);
         border: 1px solid rgba(255,255,255,0.10);
-        color: #dcfce7;
+        color: #dbeafe;
         font-size: 0.88rem;
         font-weight: 600;
         margin-bottom: 16px;
@@ -170,7 +178,7 @@ st.markdown(dedent("""
 
     .hero-subtitle {
         font-size: 1.08rem;
-        color: #d1fae5;
+        color: #dbeafe;
         max-width: 820px;
         line-height: 1.7;
         margin-bottom: 0;
@@ -201,7 +209,7 @@ st.markdown(dedent("""
     }
 
     .landing-action-text {
-        color: #d1d5db;
+        color: #cbd5e1;
         font-size: 0.94rem;
         line-height: 1.6;
         margin-bottom: 14px;
@@ -216,7 +224,7 @@ st.markdown(dedent("""
 
     .info-chip {
         background: rgba(255,255,255,0.07);
-        color: #ecfdf5;
+        color: #eff6ff;
         padding: 9px 15px;
         border-radius: 999px;
         font-size: 0.92rem;
@@ -252,7 +260,7 @@ st.markdown(dedent("""
     }
 
     .landing-text {
-        color: #d1d5db;
+        color: #cbd5e1;
         font-size: 0.96rem;
         line-height: 1.7;
     }
@@ -274,7 +282,7 @@ st.markdown(dedent("""
     }
 
     .metric-card {
-        background: linear-gradient(135deg, rgba(16,185,129,0.14), rgba(59,130,246,0.12));
+        background: linear-gradient(135deg, rgba(34,197,94,0.12), rgba(59,130,246,0.12));
         border: 1px solid rgba(255,255,255,0.08);
         border-radius: 18px;
         padding: 18px;
@@ -286,7 +294,7 @@ st.markdown(dedent("""
     }
 
     .metric-value {
-        font-size: 1.5rem;
+        font-size: 1.45rem;
         font-weight: 800;
         color: #ffffff;
         margin-bottom: 4px;
@@ -294,7 +302,7 @@ st.markdown(dedent("""
     }
 
     .metric-label {
-        color: #d1d5db;
+        color: #cbd5e1;
         font-size: 0.95rem;
     }
 
@@ -306,7 +314,7 @@ st.markdown(dedent("""
     }
 
     .result-banner {
-        background: linear-gradient(135deg, rgba(16,185,129,0.16), rgba(34,197,94,0.14));
+        background: linear-gradient(135deg, rgba(14,165,233,0.16), rgba(99,102,241,0.18));
         border: 1px solid rgba(255,255,255,0.08);
         border-radius: 20px;
         padding: 18px 20px;
@@ -323,7 +331,7 @@ st.markdown(dedent("""
     }
 
     .result-sub {
-        color: #d1fae5;
+        color: #dbeafe;
         font-size: 1rem;
     }
 
@@ -339,7 +347,7 @@ st.markdown(dedent("""
         background: rgba(255,255,255,0.04);
         border: 1px solid rgba(255,255,255,0.08);
         text-align: center;
-        color: #d1d5db;
+        color: #cbd5e1;
         font-size: 0.95rem;
         line-height: 1.8;
     }
@@ -379,7 +387,7 @@ st.markdown(dedent("""
     }
 
     .auth-subtitle {
-        color: #d1d5db;
+        color: #cbd5e1;
         text-align: center;
         margin-bottom: 20px;
     }
@@ -388,16 +396,16 @@ st.markdown(dedent("""
         width: 100%;
         border-radius: 12px;
         border: 1px solid rgba(255,255,255,0.10);
-        background: linear-gradient(135deg, #10b981, #16a34a);
+        background: linear-gradient(135deg, #2563eb, #4f46e5);
         color: white;
         font-weight: 700;
         padding: 0.72rem 1rem;
-        box-shadow: 0 6px 18px rgba(16,185,129,0.25);
+        box-shadow: 0 6px 18px rgba(37,99,235,0.25);
     }
 
     .stButton > button:hover, .stDownloadButton > button:hover {
         border-color: rgba(255,255,255,0.20);
-        background: linear-gradient(135deg, #059669, #15803d);
+        background: linear-gradient(135deg, #1d4ed8, #4338ca);
         color: white;
     }
 
@@ -424,7 +432,7 @@ st.markdown(dedent("""
         }
     }
 </style>
-"""), unsafe_allow_html=True)
+""")
 
 # ---------------- MODEL ----------------
 MODEL_PATH = "crop_model_15classes.keras"
@@ -522,10 +530,9 @@ def generate_pdf(image, disease, confidence, severity, description, remedy, char
     doc.build(elements)
     return pdf_path
 
-
 # ---------------- LANDING PAGE ----------------
 def show_landing_page():
-    st.markdown(dedent("""
+    render_html("""
     <div class="hero-card">
         <div class="hero-badge">AI-Powered Crop Health Analysis</div>
         <div class="hero-title">Crop Disease Detection System</div>
@@ -557,7 +564,7 @@ def show_landing_page():
             <div class="info-chip">🔐 Secure Access</div>
         </div>
     </div>
-    """), unsafe_allow_html=True)
+    """)
 
     btn1, btn2, _ = st.columns([1, 1, 2])
 
@@ -573,7 +580,7 @@ def show_landing_page():
 
     st.markdown("<br>", unsafe_allow_html=True)
 
-    st.markdown(dedent("""
+    render_html("""
     <div class="landing-grid">
         <div class="landing-card">
             <div class="landing-icon">🌱</div>
@@ -600,9 +607,9 @@ def show_landing_page():
             </div>
         </div>
     </div>
-    """), unsafe_allow_html=True)
+    """)
 
-    st.markdown(dedent("""
+    render_html("""
     <div class="footer">
         <div class="footer-title">Crop Disease Detection System</div>
         <div>
@@ -613,8 +620,7 @@ def show_landing_page():
             Built with Streamlit, TensorFlow, Matplotlib, SQLite, and ReportLab
         </div>
     </div>
-    """), unsafe_allow_html=True)
-
+    """)
 
 # ---------------- REGISTER PAGE ----------------
 def show_register_page():
@@ -661,7 +667,6 @@ def show_register_page():
 
     st.markdown('</div></div>', unsafe_allow_html=True)
 
-
 # ---------------- LOGIN PAGE ----------------
 def show_login_page():
     st.markdown('<div class="auth-wrapper"><div class="auth-card">', unsafe_allow_html=True)
@@ -700,7 +705,6 @@ def show_login_page():
 
     st.markdown('</div></div>', unsafe_allow_html=True)
 
-
 # ---------------- MAIN APP ----------------
 def show_main_app():
     st.sidebar.markdown("## 🌿 Dashboard Controls")
@@ -715,7 +719,7 @@ def show_main_app():
         st.session_state.auth_mode = "landing"
         st.rerun()
 
-    st.markdown(dedent(f"""
+    render_html(f"""
     <div class="hero-card">
         <div class="hero-badge">Welcome, {st.session_state.user['full_name']}</div>
         <div class="hero-title">Crop Disease Detection Dashboard</div>
@@ -731,7 +735,7 @@ def show_main_app():
             <div class="info-chip">👤 {st.session_state.user['email']}</div>
         </div>
     </div>
-    """), unsafe_allow_html=True)
+    """)
 
     st.markdown('<div class="section-card">', unsafe_allow_html=True)
     st.markdown('<div class="section-title">Upload Leaf Image</div>', unsafe_allow_html=True)
@@ -769,43 +773,43 @@ def show_main_app():
         info = disease_info.get(disease, default_remedy)
 
         st.markdown("""
-        <div class="section-card">
-            <div class="section-title">Diagnosis Summary</div>
-        """, unsafe_allow_html=True)
+<div class="section-card">
+    <div class="section-title">Diagnosis Summary</div>
+""", unsafe_allow_html=True)
 
         c1, c2, c3 = st.columns(3)
 
         with c1:
             st.markdown(f"""
-            <div class="metric-card">
-                <div class="metric-value">{disease}</div>
-                <div class="metric-label">Detected Disease</div>
-            </div>
-            """, unsafe_allow_html=True)
+<div class="metric-card">
+    <div class="metric-value">{disease}</div>
+    <div class="metric-label">Detected Disease</div>
+</div>
+""", unsafe_allow_html=True)
 
         with c2:
             st.markdown(f"""
-            <div class="metric-card">
-                <div class="metric-value">{confidence:.2f}%</div>
-                <div class="metric-label">Confidence</div>
-            </div>
-            """, unsafe_allow_html=True)
+<div class="metric-card">
+    <div class="metric-value">{confidence:.2f}%</div>
+    <div class="metric-label">Confidence</div>
+</div>
+""", unsafe_allow_html=True)
 
         with c3:
             st.markdown(f"""
-            <div class="metric-card">
-                <div class="metric-value">{severity}</div>
-                <div class="metric-label">Severity Level</div>
-            </div>
-            """, unsafe_allow_html=True)
+<div class="metric-card">
+    <div class="metric-value">{severity}</div>
+    <div class="metric-label">Severity Level</div>
+</div>
+""", unsafe_allow_html=True)
 
         st.markdown(f"""
-            <div class="result-banner">
-                <div class="result-main">{disease}</div>
-                <div class="result-sub">Diagnosis confidence: {confidence:.2f}% | Severity: {severity}</div>
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
+<div class="result-banner">
+    <div class="result-main">{disease}</div>
+    <div class="result-sub">Diagnosis confidence: {confidence:.2f}% | Severity: {severity}</div>
+</div>
+</div>
+""", unsafe_allow_html=True)
 
         st.markdown('<div class="section-card">', unsafe_allow_html=True)
         st.markdown('<div class="section-title">Disease Description</div>', unsafe_allow_html=True)
@@ -868,18 +872,18 @@ def show_main_app():
         st.markdown('</div>', unsafe_allow_html=True)
 
     else:
-        st.markdown(dedent("""
+        render_html("""
         <div class="section-card">
             <div class="section-title">Getting Started</div>
-            <p style="color:#d1d5db; margin-bottom:0; line-height:1.8;">
+            <p style="color:#cbd5e1; margin-bottom:0; line-height:1.8;">
                 Upload a crop leaf image to begin diagnosis. The system will analyze the image,
                 predict the most likely disease class, estimate confidence and severity,
                 and provide treatment guidance with downloadable outputs.
             </p>
         </div>
-        """), unsafe_allow_html=True)
+        """)
 
-    st.markdown(dedent("""
+    render_html("""
     <div class="footer">
         <div class="footer-title">Crop Disease Detection System</div>
         <div>
@@ -890,8 +894,7 @@ def show_main_app():
             Built with Streamlit, TensorFlow, Matplotlib, SQLite, and ReportLab
         </div>
     </div>
-    """), unsafe_allow_html=True)
-
+    """)
 
 # ---------------- APP ROUTING ----------------
 if st.session_state.logged_in:
