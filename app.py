@@ -12,7 +12,6 @@ import hashlib
 from datetime import datetime
 from textwrap import dedent
 
-# PDF libraries
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Image as RLImage
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import getSampleStyleSheet
@@ -108,7 +107,7 @@ if "auth_mode" not in st.session_state:
 render_html("""
 <style>
     .stApp {
-        background: linear-gradient(135deg, #081120 0%, #0f172a 45%, #111827 100%);
+        background: linear-gradient(135deg, #08140f 0%, #0f1f17 45%, #14281d 100%);
         color: #f8fafc;
     }
 
@@ -123,7 +122,7 @@ render_html("""
     }
 
     section[data-testid="stSidebar"] {
-        background: linear-gradient(180deg, #0b1220 0%, #101827 100%);
+        background: linear-gradient(180deg, #0c1812 0%, #132019 100%);
         border-right: 1px solid rgba(255,255,255,0.08);
     }
 
@@ -134,10 +133,10 @@ render_html("""
     .hero-card {
         position: relative;
         overflow: hidden;
-        background: linear-gradient(135deg, rgba(37,99,235,0.16), rgba(99,102,241,0.13), rgba(14,165,233,0.12));
+        background: linear-gradient(135deg, rgba(16,185,129,0.18), rgba(34,197,94,0.12), rgba(59,130,246,0.10));
         border: 1px solid rgba(255,255,255,0.10);
         border-radius: 28px;
-        padding: 48px 42px 34px 42px;
+        padding: 42px 38px;
         backdrop-filter: blur(14px);
         box-shadow: 0 14px 40px rgba(0,0,0,0.28);
         margin-bottom: 22px;
@@ -150,7 +149,7 @@ render_html("""
         right: -60px;
         width: 220px;
         height: 220px;
-        background: radial-gradient(circle, rgba(59,130,246,0.28) 0%, rgba(59,130,246,0.0) 70%);
+        background: radial-gradient(circle, rgba(34,197,94,0.25) 0%, rgba(34,197,94,0.0) 70%);
         border-radius: 50%;
     }
 
@@ -160,7 +159,7 @@ render_html("""
         border-radius: 999px;
         background: rgba(255,255,255,0.08);
         border: 1px solid rgba(255,255,255,0.10);
-        color: #dbeafe;
+        color: #dcfce7;
         font-size: 0.88rem;
         font-weight: 600;
         margin-bottom: 16px;
@@ -178,41 +177,10 @@ render_html("""
 
     .hero-subtitle {
         font-size: 1.08rem;
-        color: #dbeafe;
+        color: #d1fae5;
         max-width: 820px;
         line-height: 1.7;
         margin-bottom: 0;
-    }
-
-    .landing-actions {
-        display: flex;
-        gap: 18px;
-        margin-top: 26px;
-        flex-wrap: wrap;
-    }
-
-    .landing-action-card {
-        flex: 1;
-        min-width: 240px;
-        background: rgba(255,255,255,0.07);
-        border: 1px solid rgba(255,255,255,0.10);
-        border-radius: 20px;
-        padding: 20px;
-        backdrop-filter: blur(10px);
-    }
-
-    .landing-action-title {
-        font-size: 1.1rem;
-        font-weight: 700;
-        color: #ffffff;
-        margin-bottom: 6px;
-    }
-
-    .landing-action-text {
-        color: #cbd5e1;
-        font-size: 0.94rem;
-        line-height: 1.6;
-        margin-bottom: 14px;
     }
 
     .info-chip-wrap {
@@ -224,7 +192,7 @@ render_html("""
 
     .info-chip {
         background: rgba(255,255,255,0.07);
-        color: #eff6ff;
+        color: #ecfdf5;
         padding: 9px 15px;
         border-radius: 999px;
         font-size: 0.92rem;
@@ -260,7 +228,7 @@ render_html("""
     }
 
     .landing-text {
-        color: #cbd5e1;
+        color: #d1d5db;
         font-size: 0.96rem;
         line-height: 1.7;
     }
@@ -282,7 +250,7 @@ render_html("""
     }
 
     .metric-card {
-        background: linear-gradient(135deg, rgba(34,197,94,0.12), rgba(59,130,246,0.12));
+        background: linear-gradient(135deg, rgba(16,185,129,0.14), rgba(59,130,246,0.12));
         border: 1px solid rgba(255,255,255,0.08);
         border-radius: 18px;
         padding: 18px;
@@ -302,7 +270,7 @@ render_html("""
     }
 
     .metric-label {
-        color: #cbd5e1;
+        color: #d1d5db;
         font-size: 0.95rem;
     }
 
@@ -314,7 +282,7 @@ render_html("""
     }
 
     .result-banner {
-        background: linear-gradient(135deg, rgba(14,165,233,0.16), rgba(99,102,241,0.18));
+        background: linear-gradient(135deg, rgba(16,185,129,0.16), rgba(34,197,94,0.14));
         border: 1px solid rgba(255,255,255,0.08);
         border-radius: 20px;
         padding: 18px 20px;
@@ -331,7 +299,7 @@ render_html("""
     }
 
     .result-sub {
-        color: #dbeafe;
+        color: #d1fae5;
         font-size: 1rem;
     }
 
@@ -347,7 +315,7 @@ render_html("""
         background: rgba(255,255,255,0.04);
         border: 1px solid rgba(255,255,255,0.08);
         text-align: center;
-        color: #cbd5e1;
+        color: #d1d5db;
         font-size: 0.95rem;
         line-height: 1.8;
     }
@@ -387,7 +355,7 @@ render_html("""
     }
 
     .auth-subtitle {
-        color: #cbd5e1;
+        color: #d1d5db;
         text-align: center;
         margin-bottom: 20px;
     }
@@ -396,16 +364,16 @@ render_html("""
         width: 100%;
         border-radius: 12px;
         border: 1px solid rgba(255,255,255,0.10);
-        background: linear-gradient(135deg, #2563eb, #4f46e5);
+        background: linear-gradient(135deg, #10b981, #16a34a);
         color: white;
         font-weight: 700;
         padding: 0.72rem 1rem;
-        box-shadow: 0 6px 18px rgba(37,99,235,0.25);
+        box-shadow: 0 6px 18px rgba(16,185,129,0.25);
     }
 
     .stButton > button:hover, .stDownloadButton > button:hover {
         border-color: rgba(255,255,255,0.20);
-        background: linear-gradient(135deg, #1d4ed8, #4338ca);
+        background: linear-gradient(135deg, #059669, #15803d);
         color: white;
     }
 
@@ -426,10 +394,6 @@ render_html("""
         .hero-title {
             font-size: 2.2rem;
         }
-
-        .landing-actions {
-            flex-direction: column;
-        }
     }
 </style>
 """)
@@ -438,13 +402,11 @@ render_html("""
 MODEL_PATH = "crop_model_15classes.keras"
 FILE_ID = "1UCwUCrrVmFL2NifYhbrJwW4NsVjGLZCV"
 
-# ---------------- DOWNLOAD MODEL ----------------
 if not os.path.exists(MODEL_PATH):
     with st.spinner("Downloading model..."):
         url = f"https://drive.google.com/uc?id={FILE_ID}"
         gdown.download(url, MODEL_PATH, quiet=False)
 
-# ---------------- LOAD MODEL ----------------
 model = load_model(MODEL_PATH)
 
 # ---------------- CLASS LABELS ----------------
@@ -502,7 +464,7 @@ def generate_pdf(image, disease, confidence, severity, description, remedy, char
     styles = getSampleStyleSheet()
     elements = []
 
-    elements.append(Paragraph("Crop Disease Diagnosis Report", styles['Title']))
+    elements.append(Paragraph("Crop Disease Diagnosis Report", styles["Title"]))
     elements.append(Spacer(1, 10))
 
     img_temp = tempfile.NamedTemporaryFile(delete=False, suffix=".png")
@@ -510,21 +472,21 @@ def generate_pdf(image, disease, confidence, severity, description, remedy, char
     elements.append(RLImage(img_temp.name, width=200, height=200))
     elements.append(Spacer(1, 10))
 
-    elements.append(Paragraph(f"<b>Disease:</b> {disease}", styles['Normal']))
-    elements.append(Paragraph(f"<b>Confidence:</b> {confidence:.2f}%", styles['Normal']))
-    elements.append(Paragraph(f"<b>Severity:</b> {severity}", styles['Normal']))
+    elements.append(Paragraph(f"<b>Disease:</b> {disease}", styles["Normal"]))
+    elements.append(Paragraph(f"<b>Confidence:</b> {confidence:.2f}%", styles["Normal"]))
+    elements.append(Paragraph(f"<b>Severity:</b> {severity}", styles["Normal"]))
     elements.append(Spacer(1, 10))
 
-    elements.append(Paragraph("<b>Description:</b>", styles['Heading2']))
-    elements.append(Paragraph(description, styles['Normal']))
+    elements.append(Paragraph("<b>Description:</b>", styles["Heading2"]))
+    elements.append(Paragraph(description, styles["Normal"]))
     elements.append(Spacer(1, 10))
 
-    elements.append(Paragraph("<b>Recommended Remedy:</b>", styles['Heading2']))
-    elements.append(Paragraph(remedy, styles['Normal']))
+    elements.append(Paragraph("<b>Recommended Remedy:</b>", styles["Heading2"]))
+    elements.append(Paragraph(remedy, styles["Normal"]))
     elements.append(Spacer(1, 15))
 
     chart_temp = tempfile.NamedTemporaryFile(delete=False, suffix=".png")
-    chart_fig.savefig(chart_temp.name, bbox_inches='tight')
+    chart_fig.savefig(chart_temp.name, bbox_inches="tight")
     elements.append(RLImage(chart_temp.name, width=400, height=250))
 
     doc.build(elements)
@@ -540,22 +502,6 @@ def show_landing_page():
             A modern AI dashboard for identifying crop leaf diseases from images, analyzing diagnosis confidence,
             assessing severity, and generating export-ready reports for monitoring and documentation.
         </p>
-
-        <div class="landing-actions">
-            <div class="landing-action-card">
-                <div class="landing-action-title">Create New Account</div>
-                <div class="landing-action-text">
-                    Register to access the crop disease diagnosis dashboard and downloadable reports.
-                </div>
-            </div>
-            <div class="landing-action-card">
-                <div class="landing-action-title">Already a User?</div>
-                <div class="landing-action-text">
-                    Sign in and continue directly to the main diagnosis page.
-                </div>
-            </div>
-        </div>
-
         <div class="info-chip-wrap">
             <div class="info-chip">🌿 Disease Detection</div>
             <div class="info-chip">📊 Confidence Analysis</div>
@@ -565,20 +511,6 @@ def show_landing_page():
         </div>
     </div>
     """)
-
-    btn1, btn2, _ = st.columns([1, 1, 2])
-
-    with btn1:
-        if st.button("📝 Register", use_container_width=True):
-            st.session_state.auth_mode = "register"
-            st.rerun()
-
-    with btn2:
-        if st.button("🔐 Sign In", use_container_width=True):
-            st.session_state.auth_mode = "login"
-            st.rerun()
-
-    st.markdown("<br>", unsafe_allow_html=True)
 
     render_html("""
     <div class="landing-grid">
@@ -608,6 +540,23 @@ def show_landing_page():
         </div>
     </div>
     """)
+
+    col1, col2, col3 = st.columns([1, 1, 1])
+
+    with col1:
+        if st.button("🏠 Home", use_container_width=True):
+            st.session_state.auth_mode = "landing"
+            st.rerun()
+
+    with col2:
+        if st.button("📝 Register", use_container_width=True):
+            st.session_state.auth_mode = "register"
+            st.rerun()
+
+    with col3:
+        if st.button("🔐 Sign In", use_container_width=True):
+            st.session_state.auth_mode = "login"
+            st.rerun()
 
     render_html("""
     <div class="footer">
@@ -657,7 +606,7 @@ def show_register_page():
 
     col1, col2 = st.columns(2)
     with col1:
-        if st.button("← Back", key="back_from_register"):
+        if st.button("← Back to Home", key="back_from_register"):
             st.session_state.auth_mode = "landing"
             st.rerun()
     with col2:
@@ -695,7 +644,7 @@ def show_login_page():
 
     col1, col2 = st.columns(2)
     with col1:
-        if st.button("← Back", key="back_from_login"):
+        if st.button("← Back to Home", key="back_from_login"):
             st.session_state.auth_mode = "landing"
             st.rerun()
     with col2:
@@ -773,43 +722,43 @@ def show_main_app():
         info = disease_info.get(disease, default_remedy)
 
         st.markdown("""
-<div class="section-card">
-    <div class="section-title">Diagnosis Summary</div>
-""", unsafe_allow_html=True)
+        <div class="section-card">
+            <div class="section-title">Diagnosis Summary</div>
+        """, unsafe_allow_html=True)
 
         c1, c2, c3 = st.columns(3)
 
         with c1:
             st.markdown(f"""
-<div class="metric-card">
-    <div class="metric-value">{disease}</div>
-    <div class="metric-label">Detected Disease</div>
-</div>
-""", unsafe_allow_html=True)
+            <div class="metric-card">
+                <div class="metric-value">{disease}</div>
+                <div class="metric-label">Detected Disease</div>
+            </div>
+            """, unsafe_allow_html=True)
 
         with c2:
             st.markdown(f"""
-<div class="metric-card">
-    <div class="metric-value">{confidence:.2f}%</div>
-    <div class="metric-label">Confidence</div>
-</div>
-""", unsafe_allow_html=True)
+            <div class="metric-card">
+                <div class="metric-value">{confidence:.2f}%</div>
+                <div class="metric-label">Confidence</div>
+            </div>
+            """, unsafe_allow_html=True)
 
         with c3:
             st.markdown(f"""
-<div class="metric-card">
-    <div class="metric-value">{severity}</div>
-    <div class="metric-label">Severity Level</div>
-</div>
-""", unsafe_allow_html=True)
+            <div class="metric-card">
+                <div class="metric-value">{severity}</div>
+                <div class="metric-label">Severity Level</div>
+            </div>
+            """, unsafe_allow_html=True)
 
         st.markdown(f"""
-<div class="result-banner">
-    <div class="result-main">{disease}</div>
-    <div class="result-sub">Diagnosis confidence: {confidence:.2f}% | Severity: {severity}</div>
-</div>
-</div>
-""", unsafe_allow_html=True)
+            <div class="result-banner">
+                <div class="result-main">{disease}</div>
+                <div class="result-sub">Diagnosis confidence: {confidence:.2f}% | Severity: {severity}</div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
 
         st.markdown('<div class="section-card">', unsafe_allow_html=True)
         st.markdown('<div class="section-title">Disease Description</div>', unsafe_allow_html=True)
@@ -875,7 +824,7 @@ def show_main_app():
         render_html("""
         <div class="section-card">
             <div class="section-title">Getting Started</div>
-            <p style="color:#cbd5e1; margin-bottom:0; line-height:1.8;">
+            <p style="color:#d1d5db; margin-bottom:0; line-height:1.8;">
                 Upload a crop leaf image to begin diagnosis. The system will analyze the image,
                 predict the most likely disease class, estimate confidence and severity,
                 and provide treatment guidance with downloadable outputs.
