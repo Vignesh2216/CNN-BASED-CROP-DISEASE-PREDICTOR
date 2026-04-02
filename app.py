@@ -10,6 +10,7 @@ import json
 import sqlite3
 import hashlib
 from datetime import datetime
+from textwrap import dedent
 
 # PDF libraries
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Image as RLImage
@@ -100,7 +101,7 @@ if "auth_mode" not in st.session_state:
     st.session_state.auth_mode = "landing"
 
 # ---------------- CUSTOM CSS ----------------
-st.markdown("""
+st.markdown(dedent("""
 <style>
     .stApp {
         background: linear-gradient(135deg, #08140f 0%, #0f1f17 45%, #14281d 100%);
@@ -289,6 +290,7 @@ st.markdown("""
         font-weight: 800;
         color: #ffffff;
         margin-bottom: 4px;
+        word-break: break-word;
     }
 
     .metric-label {
@@ -317,6 +319,7 @@ st.markdown("""
         font-weight: 800;
         color: #ffffff;
         margin-bottom: 6px;
+        word-break: break-word;
     }
 
     .result-sub {
@@ -421,7 +424,7 @@ st.markdown("""
         }
     }
 </style>
-""", unsafe_allow_html=True)
+"""), unsafe_allow_html=True)
 
 # ---------------- MODEL ----------------
 MODEL_PATH = "crop_model_15classes.keras"
@@ -522,7 +525,7 @@ def generate_pdf(image, disease, confidence, severity, description, remedy, char
 
 # ---------------- LANDING PAGE ----------------
 def show_landing_page():
-    st.markdown("""
+    st.markdown(dedent("""
     <div class="hero-card">
         <div class="hero-badge">AI-Powered Crop Health Analysis</div>
         <div class="hero-title">Crop Disease Detection System</div>
@@ -554,7 +557,7 @@ def show_landing_page():
             <div class="info-chip">🔐 Secure Access</div>
         </div>
     </div>
-    """, unsafe_allow_html=True)
+    """), unsafe_allow_html=True)
 
     btn1, btn2, _ = st.columns([1, 1, 2])
 
@@ -570,7 +573,7 @@ def show_landing_page():
 
     st.markdown("<br>", unsafe_allow_html=True)
 
-    st.markdown("""
+    st.markdown(dedent("""
     <div class="landing-grid">
         <div class="landing-card">
             <div class="landing-icon">🌱</div>
@@ -597,9 +600,9 @@ def show_landing_page():
             </div>
         </div>
     </div>
-    """, unsafe_allow_html=True)
+    """), unsafe_allow_html=True)
 
-    st.markdown("""
+    st.markdown(dedent("""
     <div class="footer">
         <div class="footer-title">Crop Disease Detection System</div>
         <div>
@@ -610,7 +613,7 @@ def show_landing_page():
             Built with Streamlit, TensorFlow, Matplotlib, SQLite, and ReportLab
         </div>
     </div>
-    """, unsafe_allow_html=True)
+    """), unsafe_allow_html=True)
 
 
 # ---------------- REGISTER PAGE ----------------
@@ -712,7 +715,7 @@ def show_main_app():
         st.session_state.auth_mode = "landing"
         st.rerun()
 
-    st.markdown(f"""
+    st.markdown(dedent(f"""
     <div class="hero-card">
         <div class="hero-badge">Welcome, {st.session_state.user['full_name']}</div>
         <div class="hero-title">Crop Disease Detection Dashboard</div>
@@ -728,7 +731,7 @@ def show_main_app():
             <div class="info-chip">👤 {st.session_state.user['email']}</div>
         </div>
     </div>
-    """, unsafe_allow_html=True)
+    """), unsafe_allow_html=True)
 
     st.markdown('<div class="section-card">', unsafe_allow_html=True)
     st.markdown('<div class="section-title">Upload Leaf Image</div>', unsafe_allow_html=True)
@@ -865,7 +868,7 @@ def show_main_app():
         st.markdown('</div>', unsafe_allow_html=True)
 
     else:
-        st.markdown("""
+        st.markdown(dedent("""
         <div class="section-card">
             <div class="section-title">Getting Started</div>
             <p style="color:#d1d5db; margin-bottom:0; line-height:1.8;">
@@ -874,9 +877,9 @@ def show_main_app():
                 and provide treatment guidance with downloadable outputs.
             </p>
         </div>
-        """, unsafe_allow_html=True)
+        """), unsafe_allow_html=True)
 
-    st.markdown("""
+    st.markdown(dedent("""
     <div class="footer">
         <div class="footer-title">Crop Disease Detection System</div>
         <div>
@@ -887,7 +890,7 @@ def show_main_app():
             Built with Streamlit, TensorFlow, Matplotlib, SQLite, and ReportLab
         </div>
     </div>
-    """, unsafe_allow_html=True)
+    """), unsafe_allow_html=True)
 
 
 # ---------------- APP ROUTING ----------------
